@@ -1,5 +1,4 @@
 function readingList(books) {
-  // find div with id "content"
   let divIdContent = document.querySelector("#content"); // find div with id "content"
   let ul = document.createElement("ul"); // create ul tag for all books
 
@@ -24,7 +23,7 @@ function readingList(books) {
       listItem.style.backgroundColor = "red";
     }
   }
-  divIdContent.appendChild(ul);
+  divIdContent.appendChild(ul); // put ul tag with all children inside div with id "content"
 }
 
 const books = [
