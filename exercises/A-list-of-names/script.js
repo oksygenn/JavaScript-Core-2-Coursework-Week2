@@ -14,8 +14,6 @@ function listOfNames(arrayOfPeople) {
     content.appendChild(h1Name);
     content.appendChild(h2Job);
   }
-
-  return content;
 }
 
 let people = [
