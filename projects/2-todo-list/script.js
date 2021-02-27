@@ -1,13 +1,46 @@
 function populateTodoList(todos) {
   let list = document.getElementById("todo-list");
-  // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
+
+  for (let todo of todos) {
+    // create list item, add classes to it, set innerText and append it to "list"
+    const listItem = document.createElement("li");
+    listItem.classList =
+      "list-group-item d-flex justify-content-between align-items-center";
+    listItem.innerText = todo.task;
+    list.appendChild(listItem);
+
+    // create span element, add classes to it and append it to listItem
+    const spanEl = document.createElement("span");
+    spanEl.classList = "badge bg-primary rounded-pill";
+    listItem.appendChild(spanEl);
+
+    // create "done" and "delete" buttons, add classes to them and append to spanEl
+    const doneBtn = document.createElement("i");
+    doneBtn.classList = "fa fa-check";
+    doneBtn.setAttribute("aria-hidden", "true");
+    const deleteBtn = document.createElement("i");
+    deleteBtn.classList = "fa fa-trash";
+    deleteBtn.setAttribute("aria-hidden", "true");
+    spanEl.append(doneBtn, deleteBtn);
+
+    doneBtn.addEventListener("click", () => {
+      if (listItem.style.textDecoration === "line-through") {
+        listItem.style.textDecoration = "none";
+      } else {
+        listItem.style.textDecoration = "line-through";
+      }
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      listItem.remove();
+    });
+  }
 }
 
-// These are the same todos that currently display in the HTML
-// You will want to remove the ones in the current HTML after you have created them using JavaScript
 let todos = [
   { task: "Wash the dishes", completed: false },
   { task: "Do the shopping", completed: false },
+  { task: "Walk a dog", completed: false },
 ];
 
 populateTodoList(todos);
